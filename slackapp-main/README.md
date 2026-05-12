@@ -4,9 +4,15 @@ A Node.js bot that automatically posts daily thread messages for a list of partn
 
 ## What It Does
 
-Every day at 4:00 AM UTC, the bot posts one message per partner to a configured Slack channel. Each message includes the partner name and the current date (DD.MM format), creating a daily thread structure for tracking purposes.
+Every day at 3:30 AM UTC, the bot posts a message for each team to a configured Slack channel, then posts each team's partners as thread replies. Each partner thread includes the current date (DD.MM format).
 
-**Partners tracked:** RWB, RWB2, UFA, V-33, SBO, Insport, Lakibets, S2B, Sportsbull, Cheddr
+**Teams and partners:**
+
+| Team | Partners |
+|---|---|
+| D1 | Stake, Soft2Bet, Cheddr, Mahadev, SBOBet |
+| D2 | Onyxcrown, UFA, Touchvas, Sportsbull, Betafric, Mossbets, 9ubet, Stakemate, Hakibets |
+| D3 | RWB2, RWB1, V33-1, Song88 |
 
 ## Features
 
