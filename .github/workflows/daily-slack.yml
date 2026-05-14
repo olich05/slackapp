@@ -21,22 +21,18 @@ jobs:
           import pkg from '@slack/web-api';
           const { WebClient } = pkg;
           const web = new WebClient(process.env.SLACK_BOT_TOKEN);
-          const teams = [
-            { name: 'D1', partners: ['Stake', 'Soft2Bet', 'Cheddr', 'Mahadev', 'SBOBet'] },
-            { name: 'D2', partners: ['Onyxcrown', 'UFA', 'Touchvas', 'Sportsbull', 'Betafric', 'Mossbets', '9ubet', 'Stakemate', 'Hakibets'] },
-            { name: 'D3', partners: ['RWB2', 'RWB1', 'V33-1', 'Song88'] }
+          const partners = [
+            'Stake', 'Soft2Bet', 'Cheddr', 'Mahadev', 'SBOBet',
+            'Onyxcrown', 'UFA', 'Touchvas', 'Sportsbull', 'Betafric', 'Mossbets', '9ubet', 'Stakemate', 'Hakibets',
+            'RWB2', 'RWB1', 'V33-1', 'Song88'
           ];
           const now = new Date();
           const day = String(now.getDate()).padStart(2, '0');
           const month = String(now.getMonth() + 1).padStart(2, '0');
           const date = day + '.' + month;
-          for (const team of teams) {
-            const teamMsg = await web.chat.postMessage({ channel: process.env.CHANNEL_ID, text: team.name });
-            console.log('Posted team:', team.name);
-            for (const p of team.partners) {
-              await web.chat.postMessage({ channel: process.env.CHANNEL_ID, thread_ts: teamMsg.ts, text: p + ' (' + date + ')' });
-              console.log('Posted:', p, 'under', team.name);
-            }
+          for (const p of partners) {
+            await web.chat.postMessage({ channel: process.env.CHANNEL_ID, text: p + ' (' + date + ')' });
+            console.log('Posted:', p);
           }
           console.log('Done.');
           EOF
