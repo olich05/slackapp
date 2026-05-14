@@ -10,10 +10,10 @@ const CHANNEL_ID = process.env.CHANNEL_ID;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const teams = [
-  { name: "D1", partners: ["Stake", "Soft2Bet", "Cheddr", "Mahadev", "SBOBet"] },
-  { name: "D2", partners: ["Onyxcrown", "UFA", "Touchvas", "Sportsbull", "Betafric", "Mossbets", "9ubet", "Stakemate", "Hakibets"] },
-  { name: "D3", partners: ["RWB2", "RWB1", "V33-1", "Song88"] },
+const partners = [
+  "Stake", "Soft2Bet", "Cheddr", "Mahadev", "SBOBet",
+  "Onyxcrown", "UFA", "Touchvas", "Sportsbull", "Betafric", "Mossbets", "9ubet", "Stakemate", "Hakibets",
+  "RWB2", "RWB1", "V33-1", "Song88",
 ];
 
 function getCurrentDate() {
@@ -27,20 +27,12 @@ async function sendPartnerThreads() {
   try {
     console.log("Starting partner threads...");
     const date = getCurrentDate();
-    for (const team of teams) {
-      const teamMsg = await web.chat.postMessage({
+    for (const partner of partners) {
+      await web.chat.postMessage({
         channel: CHANNEL_ID,
-        text: team.name,
+        text: `${partner} (${date})`,
       });
-      console.log(`Posted team ${team.name} with TS: ${teamMsg.ts}`);
-      for (const partner of team.partners) {
-        await web.chat.postMessage({
-          channel: CHANNEL_ID,
-          thread_ts: teamMsg.ts,
-          text: `${partner} (${date})`,
-        });
-        console.log(`Posted ${partner} under ${team.name}`);
-      }
+      console.log(`Posted ${partner}`);
     }
     console.log("All partner threads sent successfully.");
   } catch (error) {
