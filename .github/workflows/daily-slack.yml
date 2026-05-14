@@ -22,7 +22,7 @@ jobs:
           const { WebClient } = pkg;
           const web = new WebClient(process.env.SLACK_BOT_TOKEN);
           const partners = [
-            'Stake', 'Soft2Bet', 'Cheddr', 'Mahadev', 'SBOBet',
+            'Soft2Bet', 'Cheddr', 'Mahadev', 'SBOBet',
             'Onyxcrown', 'UFA', 'Touchvas', 'Sportsbull', 'Betafric', 'Mossbets', '9ubet', 'Stakemate', 'Hakibets',
             'RWB2', 'RWB1', 'V33-1', 'Song88'
           ];
