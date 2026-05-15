@@ -66,4 +66,6 @@ cron.schedule("10 4 * * *", sendPartnerThreads, {
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+  console.log(`Token starts with: ${token?.slice(0, 10)}`);
+  console.log(`Channel ID: ${CHANNEL_ID}`);
 });
