@@ -60,6 +60,10 @@ app.post("/slack/commands", (req, res) => {
 });
 
 
+cron.schedule("0 4 * * *", sendPartnerThreads, {
+  timezone: "UTC",
+});
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
