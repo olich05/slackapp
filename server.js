@@ -58,9 +58,7 @@ app.post("/slack/commands", (req, res) => {
   }
   res.status(200).send();
 });
-cron.schedule("10 7 * * *", sendPartnerThreads, {
-  timezone: "Europe/Tallinn",
-});
+
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
