@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const { WebClient } = require("@slack/web-api");
 const cron = require("node-cron");
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 const token = process.env.SLACK_BOT_TOKEN;
 const web = new WebClient(token);
 const CHANNEL_ID = process.env.CHANNEL_ID;
@@ -59,7 +59,8 @@ app.post("/slack/commands", (req, res) => {
   res.status(200).send();
 });
 
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+cron.schedule("10 7 * * *", sendPartnerThreads, {
+  timezone: "Europe/Tallinn",
 });
+
+app.listen(PORT);
