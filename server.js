@@ -60,7 +60,7 @@ app.post("/slack/commands", (req, res) => {
 });
 
 
-cron.schedule("0 4 * * *", sendPartnerThreads, {
+cron.schedule("10 4 * * *", sendPartnerThreads, {
   timezone: "UTC",
 });
 
