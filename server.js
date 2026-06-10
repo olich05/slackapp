@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const partners = [
   "Stake", "Soft2Bet", "Cheddr", "Mahadev", "SBOBet",
-  "Onyxcrown", "UFA", "Touchvas", "Sportsbull", "Betafric", "Mossbets", "9ubet", "Stakemate", "Hakibets",
+  "Onyxcrown", "UFA", "Touchvas", "Sportsbull", "Betafric", "9ubet",
   "RWB2", "RWB1", "V33-1", "Song88",
 ];
 
@@ -42,7 +42,11 @@ async function sendPartnerThreads() {
 }
 
 // Manual test
+// Manual test
 app.get("/test", async (req, res) => {
+  if (req.query.secret !== process.env.TEST_SECRET) {
+    return res.status(403).send("Forbidden");
+  }
   await sendPartnerThreads();
   res.send("Manual threads sent.");
 });
