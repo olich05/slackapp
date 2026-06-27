@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const partners = [
   "Stake", "Soft2Bet", "Cheddr", "Mahadev", "SBOBet",
-  "Onyxcrown", "UFA", "Touchvas", "Sportsbull", "Betafric", "9ubet",
+  "Onyxcrown", "UFA", "Touchvas", "Sportsbull", "Betafric", "9ubet", "Jambobet",
   "RWB2", "RWB1", "V33-1", "Song88",
 ];
 
